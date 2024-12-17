@@ -17,24 +17,40 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
-      lspconfig.tsserver.setup({
-        capabilities = capabilities
+      -- lspconfig.tsserver.setup({
+      -- 	capabilities = capabilities,
+      -- })
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
       })
       lspconfig.solargraph.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
       })
-     lspconfig.pyright.setup({
-        capabilities = capabilities
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+        -- settings = {
+        -- 	pyright = {
+        -- 		-- Using Ruff's import organizer
+        -- 		disableOrganizeImports = true,
+        -- 	},
+        -- 	python = {
+        -- 		analysis = {
+        -- 			-- Ignore all files for analysis to exclusively use Ruff for linting
+        -- 			ignore = { "*" },
+        -- 		},
+        -- 	},
+        -- },
       })
-     lspconfig.html.setup({
-        capabilities = capabilities
+      lspconfig.html.setup({
+        capabilities = capabilities,
       })
       lspconfig.lua_ls.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
       })
+      -- lspconfig.ruff.setup({})
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
