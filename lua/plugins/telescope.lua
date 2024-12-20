@@ -1,26 +1,51 @@
 return {
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("telescope").setup({
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown({}),
-          },
-        },
-      })
-      local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-      vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-      vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.5",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			local actions = require("telescope.actions")
+			local action_state = require("telescope.actions.state")
 
-      require("telescope").load_extension("ui-select")
-    end,
-  },
+			-- Custom action for opening in vertical split
+			local function open_vertical_split(prompt_bufnr)
+				local entry = action_state.get_selected_entry()
+				local cmd = "vsplit " .. entry.path
+				vim.cmd(cmd)
+				actions.close(prompt_bufnr)
+			end
+			require("telescope").setup({
+				defaults = {
+					mappings = {
+						i = { -- Insert mode mappings
+							["<C-a>"] = open_vertical_split,
+						},
+						n = { -- Normal mode mappings
+							["<C-a>"] = open_vertical_split,
+						},
+					},
+					sorting_strategy = "ascending",
+					layout_config = { prompt_position = "top" },
+					file_sorter = require("telescope.sorters").get_fzy_sorter,
+					generic_sorter = require("telescope.sorters").get_fzy_sorter,
+				},
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+ 				},
+			})
+			local builtin = require("telescope.builtin")
+			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+			vim.keymap.set("n", "<leader>fg", builtin.grep_string, {})
+			vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, {})
+			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
+
+			require("telescope").load_extension("ui-select")
+		end,
+	},
 }
