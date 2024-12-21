@@ -7,10 +7,10 @@ return {
     config = function()
       require("gitsigns").setup()
 
-      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
-      vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
-      vim.keymap.set("n", "<leader>ghn", ":Gitsigns next_hunk<CR>", {})
-      vim.keymap.set("n", "<leader>ghp", ":Gitsigns prev_hunk<CR>", {})
+      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview Hunk" })
+      vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle Line Blame" })
+      vim.keymap.set("n", "<leader>ghn", ":Gitsigns next_hunk<CR>", { desc = "Next Hunk" })
+      vim.keymap.set("n", "<leader>ghp", ":Gitsigns prev_hunk<CR>", { desc = "Prev Hunk" })
     end
   }
 }
