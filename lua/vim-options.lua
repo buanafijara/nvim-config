@@ -22,7 +22,14 @@ vim.keymap.set("n", "<c-t><c-w>", ":tabclose<CR>")
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 vim.wo.number = true
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- Disable folding at startup.
-vim.cmd("set nofoldenable")
+-- vim.wo.foldmethod = "expr"
+-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- -- Disable folding at startup.
+-- vim.cmd("set nofoldenable")
+--
+-- Nvim UFO configs
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
