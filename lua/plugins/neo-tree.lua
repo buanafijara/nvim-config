@@ -7,7 +7,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", {})
-		vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+		vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { desc = "NeoTree Toggle" })
+		vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", { desc = "NeoTree Buffer Reveal Float" })
 	end,
 }
