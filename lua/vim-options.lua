@@ -19,6 +19,8 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 -- Navigate vim tabs
 vim.keymap.set("n", "<c-t><c-w>", ":tabclose<CR>")
+vim.keymap.set("n", "<c-]>", ":bnext<CR>")
+vim.keymap.set("n", "<c-[>", ":bprev<CR>")
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 vim.wo.number = true
