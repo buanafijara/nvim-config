@@ -11,6 +11,6 @@ return {
       require("venv-selector").setup()
     end,
     keys = {
-      { ",v", "<cmd>VenvSelect<cr>" },
+      { "<leader>pv", "<cmd>VenvSelect<cr>" },
     },
 }
