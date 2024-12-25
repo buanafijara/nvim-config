@@ -7,6 +7,7 @@ vim.cmd("set relativenumber")
 vim.g.mapleader = " "
 vim.g.background = "light"
 
+vim.opt.clipboard = "unnamedplus"
 vim.opt.swapfile = false
 
 -- Navigate vim panes better
