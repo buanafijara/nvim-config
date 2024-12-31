@@ -19,7 +19,7 @@ vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 -- Navigate vim tabs
-vim.keymap.set("n", "<c-t><c-w>", ":tabclose<CR>")
+vim.keymap.set("n", "<c-t><c-w>", ":bd!<CR>")
 vim.keymap.set("n", "<c-]>", ":bnext<CR>")
 vim.keymap.set("n", "<c-[>", ":bprev<CR>")
 
